@@ -44,6 +44,7 @@
     /** If this user follows the given name, returns true; otherwise returns false. */
     public boolean follows(String name) {
         //// Replace the following statement with your code
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
         for (int i = 0; i < this.fCount; i++){
             if (this.follows[i].equals(name))
                 return true;
@@ -54,7 +55,8 @@
      *  If this user already follows the given name, or if the follows list is full, does nothing and returns false; */
     public boolean addFollowee(String name) {
         //// Replace the following statement with your code
-        if (this.follows(name) || this.fCount >= maxfCount)
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
+        if (this.follows(name) || this.fCount >= maxfCount || name.equals(this.getName()))
             return false;
   
         this.follows[this.fCount] = name;
@@ -66,6 +68,7 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
         for (int i = 0; i < this.fCount; i++){
             if (this.follows[i].equals(name)) {
                 for (int j = i; j < this.fCount - 1; j++){

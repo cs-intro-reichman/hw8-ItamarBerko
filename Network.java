@@ -30,6 +30,7 @@ public class Network {
      *  Notice that the method receives a String, and returns a User object. */
     public User getUser(String name) {
         //// Replace the following statement with your code
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
         for (int i = 0; i < this.userCount; i++){
             if (name.equals(this.users[i].getName()))
                 return this.users[i];
@@ -43,6 +44,7 @@ public class Network {
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
         //// Replace the following statement with your code
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
         if (this.getUser(name) != null || this.userCount >= this.users.length)
             return false;
   
@@ -56,6 +58,8 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
+        name1 = name1.substring(0, 1).toUpperCase() + name1.substring(1);
+        name2 = name2.substring(0, 1).toUpperCase() + name2.substring(1);
         User user1 = this.getUser(name1);
         User user2 = this.getUser(name2);
         if (user1 == null || user2 == null)
@@ -68,6 +72,7 @@ public class Network {
      *  the user that has the maximal mutual number of followees as the user with the given name. */
     public String recommendWhoToFollow(String name) {
         //// Replace the following statement with your code
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
         User oUser = this.getUser(name);
         User mostRecommendedUserToFollow = null;
         int maxMutual = 0;
@@ -104,6 +109,7 @@ public class Network {
      *  the users in this network. Note: A name can appear 0 or 1 times in each list. */
     private int followeeCount(String name) {
         //// Replace the following statement with your code
+        name = name.substring(0, 1).toUpperCase() + name.substring(1);
         int count = 0;
         for (int i = 0; i < this.userCount; i++){
             if (this.users[i].follows(name)) {
