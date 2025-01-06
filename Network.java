@@ -44,6 +44,8 @@ public class Network {
     *  Otherwise, creates a new user with the given name, adds the user to this network, and returns true. */
     public boolean addUser(String name) {
         //// Replace the following statement with your code
+        if (name == null)
+            return false;
         name = name.substring(0, 1).toUpperCase() + name.substring(1);
         if (this.getUser(name) != null || this.userCount >= this.users.length)
             return false;
@@ -58,6 +60,8 @@ public class Network {
      *  or if the "follows" addition failed for some reason, returns false. */
     public boolean addFollowee(String name1, String name2) {
         //// Replace the following statement with your code
+        if (name1 == null || name2 == null)
+            return false;
         name1 = name1.substring(0, 1).toUpperCase() + name1.substring(1);
         name2 = name2.substring(0, 1).toUpperCase() + name2.substring(1);
         User user1 = this.getUser(name1);
@@ -93,6 +97,8 @@ public class Network {
      *  The user who appears the most in the follow lists of all the users. */
     public String mostPopularUser() {
         //// Replace the following statement with your code
+        if (this.userCount == 0)
+            return null;
         User mostPoplarUser = null;
         int maxAppearence = 0;
         for (int i = 0; i < this.userCount; i++){

@@ -68,6 +68,8 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         //// Replace the following statement with your code
+        if (name == null)
+            return false;
         name = name.substring(0, 1).toUpperCase() + name.substring(1);
         for (int i = 0; i < this.fCount; i++){
             if (this.follows[i].equals(name)) {
